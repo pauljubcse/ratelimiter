@@ -1,4 +1,4 @@
-module ratelimiter
+module github.com/pauljubcse/ratelimiter
 
 go 1.22.5
 
