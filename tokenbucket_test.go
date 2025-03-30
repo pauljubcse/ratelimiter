@@ -29,12 +29,7 @@ func TestTokenBucket(t *testing.T) {
 	maxRequests := int64(6)
 
 	// Initialize the TokenBucket
-	tb := &TokenBucket{
-		dbclient:         client,
-		domain:           domain,
-		intervalInSeconds: interval,
-		maximumRequests:  maxRequests,
-	}
+	tb := NewTokenBucket(client, domain, interval, maxRequests)
 
 	// Define user IDs for testing
 	userIDs := []string{
