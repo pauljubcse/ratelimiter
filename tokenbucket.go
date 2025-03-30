@@ -10,12 +10,21 @@ import (
 )
 
 //Lazy Refill
-type TokenBucket struct{
-	dbclient *kvsclient.Client
-	domain string
+type TokenBucket struct {
+	dbclient          *kvsclient.Client
+	domain            string
 	intervalInSeconds int64
-	maximumRequests int64
+	maximumRequests   int64
+}
 
+// NewTokenBucket creates a new TokenBucket instance.
+func NewTokenBucket(dbclient *kvsclient.Client, domain string, intervalInSeconds, maximumRequests int64) *TokenBucket {
+	return &TokenBucket{
+		dbclient:          dbclient,
+		domain:            domain,
+		intervalInSeconds: intervalInSeconds,
+		maximumRequests:   maximumRequests,
+	}
 }
 func (t *TokenBucket) Allow (userID string) bool {
 

@@ -39,14 +39,14 @@ func TestFixedWindowLimiter(t *testing.T) {
 	iterations := 3
 	for i:=0;i<iterations;i++{
 		for _, userID := range userIDs {
-			fmt.Printf("Testing requests for userID: %s\n", userID)
+			// fmt.Printf("Testing requests for userID: %s\n", userID)
 			//fmt.Printf("Test: %s\n", client.GetString(domain, userID+":"+))
 			for i := 0; i < 6; i++ { // Attempt 6 requests per user
 				if limiter.Allow(userID) {
-					fmt.Printf("Request %d for userID %s allowed\n", i+1, userID)
+					// fmt.Printf("Request %d for userID %s allowed\n", i+1, userID)
 					successCount++
 				} else {
-					fmt.Printf("Request %d for userID %s dropped\n", i+1, userID)
+					// fmt.Printf("Request %d for userID %s dropped\n", i+1, userID)
 					dropCount++
 				}
 			}
